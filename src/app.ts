@@ -1,6 +1,6 @@
 import express from 'express';
 
-// Vinicius Campos
+// Vinicius
 
 const app = express();
 
