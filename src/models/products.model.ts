@@ -1,4 +1,4 @@
-import { Pool, ResultSetHeader } from 'mysql2/promise';
+import { Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import Iproduct from '../interfaces/product.interface';
 
 export default class ProductsModel {
@@ -20,5 +20,11 @@ export default class ProductsModel {
       amount,
     };
     return newProduct;
+  }
+
+  async getAll(): Promise<Iproduct[]> {
+    const [result] = await this.connection.execute<(Iproduct & RowDataPacket)[]>(
+      'SELECT * FROM Trybesmith.products ORDER BY id');
+    return result;
   }
 }

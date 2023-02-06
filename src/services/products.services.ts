@@ -12,4 +12,8 @@ export default class ProductsService {
   async create(name:string, amount:string): Promise<Iproduct> {
     return this.model.create(name, amount);
   }
+
+  async getAll():Promise<Iproduct[]> {
+    return this.model.getAll();
+  }
 }
